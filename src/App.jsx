@@ -1,5 +1,5 @@
 import './App.css'
-import logoEmanuele from './assets/images/logoEmanuele.png'
+import logoEmanuele from './assets/images/LogoEmanuele.png'
 import iconCoracao from '../public/iconCoracao.png'
 import iconCalendario from '../public/iconCalendario.png'
 import imagemHome from './assets/images/imagemHome.png'
