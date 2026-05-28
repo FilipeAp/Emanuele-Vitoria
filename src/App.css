@@ -5,6 +5,14 @@
     box-sizing: border-box;
     font-family: "DM Sans", sans-serif;
     color: #2A2A2A;
+    font-size: 24px;
+}
+
+.body2{
+    background-color: #F5EDE3;
+    background-image: url(./assets/images/imagemHome.png);
+    background-repeat: no-repeat;
+    background-position: right top;
 }
 
 header{
@@ -12,7 +20,6 @@ header{
     background-color: #C8A2D68C;
     width: 94%;
     height: 70px;
-    /* opacity: 0.55; */
     backdrop-filter: blur(4px);
     border-radius: 10px;
     -webkit-backdrop-filter: blur(10px);
@@ -25,6 +32,7 @@ header{
     left: 50%;
     margin-top: 20px;
     transform: translateX(-50%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
     & ul{
         display: flex;
@@ -36,7 +44,71 @@ header{
         list-style: none;
         & a{
             text-decoration: none;
-            font-size: 24px;
         }
     }
 }
+
+main{
+    padding-top: 130px;
+    height: 4000px;
+    width: 86%;
+    margin: auto;
+
+}
+
+.Inicio{
+    & h1{
+        font-family: "Playfair Display", serif;
+        font-size: 64px;
+        width: 46%;
+        height: 231px;
+        font-weight: 500;
+        line-height:119.8%;
+        margin-top: 10px;
+    }
+    & a{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 341px;
+        height: 69px;
+        background-color: #E6C76E;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 10px;
+        box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.28);
+        margin-top: 30px;
+        transition: 0.4s;
+    }
+    & a:hover{
+        color: #F5EDE3;
+        background-color: #9B6BB3;
+        
+    }
+}
+
+.SeuMomento{
+    background-color: #DCC4DC;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 49px;
+    width: 373px;
+    border-radius: 10px;
+    padding: 0px 18px;
+}
+
+.TextoRoxo{
+    color: #9B6BB3;
+    font-family: "Playfair Display", serif;
+    font-size: 64px;
+}
+
+.ParagrafoInicio{
+    width:46%;
+    margin-top: 10px;
+}
+
