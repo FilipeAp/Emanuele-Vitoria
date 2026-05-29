@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './App.css'
 import logoEmanuele from './assets/images/LogoEmanuele.png'
+import menuHamburguer from './assets/menuHamburguer.png'
 import iconCoracao from '../public/iconCoracao.png'
 import iconCalendario from '../public/iconCalendario.png'
 import resultado1 from './assets/images/resultado1.jpeg'
@@ -59,33 +60,61 @@ const procedimentos = [
 
 function App() {
   const [categoriaAtiva, setCategoriaAtiva] = useState("facial");
+  const [menuAberto, setMenuAberto] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const procedimentosFiltrados = procedimentos.filter(
     (p) => p.categoria === categoriaAtiva
   );
   
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const itemsPerSlide = isMobile ? 1 : 3;
+  const maxSlideResultado = resultados.length - itemsPerSlide;
+  const maxSlideEspaco = espaco.length - itemsPerSlide;
+
   // carrossel
   const [slideAtivo, setSlideAtivo] = useState(0);
 
-  const proximoSlide = () => setSlideAtivo((prev) => (prev + 1) % (resultados.length - 2));
-  const slideAnterior = () => setSlideAtivo((prev) => (prev - 1 + (resultados.length - 2)) % (resultados.length - 2));
+  const proximoSlide = () => setSlideAtivo((prev) => (prev + 1) % (maxSlideResultado + 1));
+  const slideAnterior = () => setSlideAtivo((prev) => (prev - 1 + (maxSlideResultado + 1)) % (maxSlideResultado + 1));
+
+  useEffect(() => {
+    if (slideAtivo > maxSlideResultado) {
+      setSlideAtivo(maxSlideResultado);
+    }
+  }, [maxSlideResultado, slideAtivo]);
 
   //carrossel 2
   const [slideEspaco, setSlideEspaco] = useState(0);
 
-  const proximoSlideEspaco = () => setSlideEspaco((prev) => (prev + 1) % (espaco.length - 2));
-  const slideAnteriorEspaco = () => setSlideEspaco((prev) => (prev - 1 + (espaco.length - 2)) % (espaco.length - 2));
+  const proximoSlideEspaco = () => setSlideEspaco((prev) => (prev + 1) % (maxSlideEspaco + 1));
+  const slideAnteriorEspaco = () => setSlideEspaco((prev) => (prev - 1 + (maxSlideEspaco + 1)) % (maxSlideEspaco + 1));
+
+  useEffect(() => {
+    if (slideEspaco > maxSlideEspaco) {
+      setSlideEspaco(maxSlideEspaco);
+    }
+  }, [maxSlideEspaco, slideEspaco]);
 
   return (
     <div className="body2">
       <header>
         <img src={logoEmanuele} alt="Logo Emanuele Vitória" />
-        <ul>
-          <li><a href="#procedimentos">Procedimentos</a></li>
-          <li><a href="#resultados">Resultados</a></li>
-          <li><a href="#prazer">Sobre mim</a></li>
-          <li><a href="#espaco">Espaço</a></li>
-          <li><a href="#endereco">Endereço & Contato</a></li>
+        <button className="HamburguerBtn" onClick={() => setMenuAberto((prev) => !prev)}>
+          <img src={menuHamburguer} alt="Menu" />
+        </button>
+        <ul className={menuAberto ? "open" : ""}>
+          <li><a href="#procedimentos" onClick={() => setMenuAberto(false)}>Procedimentos</a></li>
+          <li><a href="#resultados" onClick={() => setMenuAberto(false)}>Resultados</a></li>
+          <li><a href="#prazer" onClick={() => setMenuAberto(false)}>Sobre mim</a></li>
+          <li><a href="#espaco" onClick={() => setMenuAberto(false)}>Espaço</a></li>
+          <li><a href="#endereco" onClick={() => setMenuAberto(false)}>Endereço & Contato</a></li>
         </ul>
       </header>
 
@@ -139,7 +168,7 @@ function App() {
             <button className="CarrosselBtn esquerda" onClick={slideAnterior}>&#8249;</button>
 
             <div className="CarrosselFotos">
-              {resultados.slice(slideAtivo, slideAtivo + 3).map((img, i) => (
+              {resultados.slice(slideAtivo, slideAtivo + itemsPerSlide).map((img, i) => (
                 <img key={slideAtivo + i} src={img} alt={`Resultado ${slideAtivo + i + 1}`} className="CarrosselFoto" />
               ))}
             </div>
@@ -148,7 +177,7 @@ function App() {
           </div>
 
           <div className="CarrosselDots">
-            {Array.from({ length: resultados.length - 2 }).map((_, i) => (
+            {Array.from({ length: maxSlideResultado + 1 }).map((_, i) => (
               <span
                 key={i}
                 className={`Dot ${slideAtivo === i ? "ativo" : ""}`}
@@ -181,7 +210,7 @@ function App() {
             <button className="CarrosselBtn esquerda" onClick={slideAnteriorEspaco}>&#8249;</button>
 
             <div className="CarrosselFotos">
-              {espaco.slice(slideEspaco, slideEspaco + 3).map((img, i) => (
+              {espaco.slice(slideEspaco, slideEspaco + itemsPerSlide).map((img, i) => (
                 <img key={slideEspaco + i} src={img} alt={`Espaço ${slideEspaco + i + 1}`} className="CarrosselFoto" />
               ))}
             </div>
@@ -190,7 +219,7 @@ function App() {
           </div>
 
           <div className="CarrosselDots">
-            {Array.from({ length: espaco.length - 2 }).map((_, i) => (
+            {Array.from({ length: maxSlideEspaco + 1 }).map((_, i) => (
               <span
                 key={i}
                 className={`Dot ${slideEspaco === i ? "ativo" : ""}`}
@@ -241,9 +270,11 @@ function App() {
         <img src={logoBranca} alt="Logo Emanuele Vitória" className="logoRodape"/>
         <div className="contatos">
           <h3>Contato:</h3>
-          <a href="http://wa.me/11986507900" target="_blank" rel="noopener noreferrer"><img src={iconWhats} alt="Icon do whatsapp" /></a>
-          <a href="https://www.instagram.com/ev_esteticaa/" target="_blank" rel="noopener noreferrer"><img src={iconInsta} alt="Icon do Instagram" /></a>
-          <a href="mailto:emanuelevitoriaps@gmail.com" target="_blank" rel="noopener noreferrer"><img src={iconEmail} alt="Icon do Email" /></a>
+          <div className="social-icons">
+            <a href="http://wa.me/11986507900" target="_blank" rel="noopener noreferrer"><img src={iconWhats} alt="Icon do whatsapp" /></a>
+            <a href="https://www.instagram.com/ev_esteticaa/" target="_blank" rel="noopener noreferrer"><img src={iconInsta} alt="Icon do Instagram" /></a>
+            <a href="mailto:emanuelevitoriaps@gmail.com" target="_blank" rel="noopener noreferrer"><img src={iconEmail} alt="Icon do Email" /></a>
+          </div>
         </div>
       </footer>
     </div>
