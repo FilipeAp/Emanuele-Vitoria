@@ -1,4 +1,4 @@
-# Site para a esteticista Emanuele Vitória
+# ✨Site para a esteticista Emanuele Vitória
 
 > **"Do briefing ao deploy, porque tecnologia também serve a quem transforma pessoas."**
 
