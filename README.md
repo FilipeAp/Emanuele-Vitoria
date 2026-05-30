@@ -46,4 +46,4 @@ Desenvolvido por: **Filipe Apolinario** ([FilipeAp](https://github.com/FilipeAp)
 
 ---
 
-*Projeto desenvolvido durante a UC3 do curso PROPROFISSÃO — [Instituto PROA](https://www.linkedin.com/company/instituto-proa/) × Senac Lapa Tito.*
+*Projeto desenvolvido durante a UC3 do curso PROPROFISSÃO / [Instituto PROA](https://www.linkedin.com/company/instituto-proa/) × Senac Lapa Tito.*
