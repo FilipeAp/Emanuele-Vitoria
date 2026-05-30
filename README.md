@@ -1,16 +1,49 @@
-# React + Vite
+# Site para a esteticista Emanuele Vitória
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **"Do briefing ao deploy, porque tecnologia também serve a quem transforma pessoas."**
 
-Currently, two official plugins are available:
+A **página da Emanuele Vitória** é um site profissional desenvolvido para uma esteticista em formação que atende a domicílio e em clínica parceira. O projeto traduz a identidade e os serviços da profissional em uma experiência digital acessível, moderna e pensada para seus clientes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Desenvolvido como projeto da **UC3 do curso PROPROFISSÃO do Instituto PROA**, com foco em React.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎯 O Projeto
 
-## Expanding the ESLint configuration
+A proposta foi encontrar um pequeno negócio ou profissional real e criar uma página para ele, do briefing ao deploy. O resultado é uma solução que vai além do código: é entender a necessidade do cliente e traduzir isso em componentes.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Stack Técnica
+
+Construído com tecnologias modernas para garantir performance e escalabilidade:
+
+* **Linguagens:** JavaScript, CSS
+* **Framework:** React (com Vite)
+* **Hospedagem:** Vercel
+
+---
+
+## ✨ Funcionalidades
+
+- Apresentação dos serviços de estética
+- Seção de contato / agendamento
+- Layout responsivo para mobile e desktop
+- Interface focada na experiência do cliente
+
+---
+
+## 🔗 Links Úteis
+
+* **🚀 Deploy em Produção:** [emanuele-vitoria.vercel.app](https://emanuele-vitoria.vercel.app/)
+
+---
+
+## 👤 Autor
+
+Desenvolvido por: **Filipe Apolinario** ([FilipeAp](https://github.com/FilipeAp))
+
+- **LinkedIn:** [Filipe Apolinário](https://www.linkedin.com/in/o-filipe-apolinario/?skipRedirect=true)
+- **Email:** [apolinariofilipe643@gmail.com](mailto:apolinariofilipe643@gmail.com)
+
+---
+
+*Projeto desenvolvido durante a UC3 do curso PROPROFISSÃO — [Instituto PROA](https://www.linkedin.com/company/instituto-proa/) × Senac Lapa Tito.*
